@@ -13,6 +13,5 @@
 https://github.com/mjuenema/Terraform-Up-and-Running-Code-Samples-Translated/. 
 
 
-## License
-
-This code is released under the MIT License. See LICENSE.txt.
+## 라이센스
+모든 코드들은 MIT 라이센스를 따르고 있습니다. LICENSE.txt를 참조 하십시오.
