@@ -1,8 +1,9 @@
-# Terraform: Up & Running Code
+# Terraform: 구성과 동작 실습 코드
 
 This repo contains the code samples for the book *[Terraform: Up and Running](http://www.terraformupandrunning.com)* by 
 [Yevgeniy Brikman](http://www.ybrikman.com).
-
+이 코드 레포는 *[Terraform: Up and Running](http://www.terraformupandrunning.com)* by 
+[Yevgeniy Brikman](http://www.ybrikman.com)를 기반으로 한글 번역과 최신 버전(v0.11.11)으로 코드가 수정 되었습니다
 
 
 
