@@ -18,6 +18,6 @@ terraform {
     key    = "stage/data-stores/mysql/terraform.tfstate"
     region = "us-east-1"
     encrypt = true
-    dynamodb_table = "(생성한 DynamoDB 테이블 이름)"
+#    dynamodb_table = "(생성한 DynamoDB 테이블 이름)"
   }
 }
