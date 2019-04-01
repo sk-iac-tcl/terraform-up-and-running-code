@@ -1,35 +1,29 @@
-# S3 Remote State Example
+# S3 상태 파일 예제
 
-This folder contains example [Terraform](https://www.terraform.io/) templates that an [S3](https://aws.amazon.com/s3/)
-bucket in an [Amazon Web Services (AWS) account](http://aws.amazon.com/). The S3 bucket can be used for [remote state
-storage](https://www.terraform.io/docs/state/remote/).
+이번 실습은 [Terraform](https://www.terraform.io/)을 통해 [S3](https://aws.amazon.com/s3/)
+버켓을 [Amazon Web Services (AWS) account](http://aws.amazon.com/)에 생성한 다음 해당 S3 버킷을 원격 상태 [remote state
+storage](https://www.terraform.io/docs/state/remote/)로 활용하는 실습 입니다.
 
-For more info, please see Chapter 3, "How to Manage Terraform State", of 
-*[Terraform: Up and Running](http://www.terraformupandrunning.com)*.
+자세한 내용은 *[테라폼 설치에서 운영까지](http://www.terraformupandrunning.com)* 서적의 "제3장, 테라폼 상태 관리" 참고 하십시오.
 
-## Pre-requisites
+## 사전 준비 사항
 
-* You must have [Terraform](https://www.terraform.io/) installed on your computer. 
-* You must have an [Amazon Web Services (AWS) account](http://aws.amazon.com/).
+* [Terraform](https://www.terraform.io/)이 설치 되어 있어야 합니다. 
+* [Amazon Web Services (AWS) account](http://aws.amazon.com/) 계정을 보유 하고 있어야 합니다.
 
-Please note that this code was written for Terraform 0.8.x.
+## 시작 하기
 
-## Quick start
+**이 실습은 실제 AWS 리소스를 생성합니다. 대부분 [AWS Free Tier](https://aws.amazon.com/free/)로 지원되는 범위안에서 자원을 생성하고 활용하나 사용자의 조건에 따라서 비용이 일부 발생 할 수도 있습니다. 비용 발생에 대한 부분에 대해서는 실습 제공자가 책임지지 않으며 비용에 주의하여 실습을 진행하십시오. [비용 알람](http://bit.ly/2Nryf1C)을 설정해놓는 것을 권장합니다.** 
 
-**Please note that this example will deploy real resources into your AWS account. We have made every effort to ensure 
-all the resources qualify for the [AWS Free Tier](https://aws.amazon.com/free/), but we are not responsible for any
-charges you may incur.** 
-
-Configure your [AWS access 
-keys](http://docs.aws.amazon.com/general/latest/gr/aws-sec-cred-types.html#access-keys-and-secret-access-keys) as 
-environment variables:
+[AWS 엑세스 키](http://docs.aws.amazon.com/general/latest/gr/aws-sec-cred-types.html#access-keys-and-secret-access-keys) 
+를 환경 변수로 설정:
 
 ```
 export AWS_ACCESS_KEY_ID=(your access key id)
 export AWS_SECRET_ACCESS_KEY=(your secret access key)
 ```
 
-You may want to specify a name for your bucket in `vars.tf` using the `default` parameter:
+`vars.tf`의 `default` 매개 변수를 통해 S3 버킷 이름을 정의 가능:
 
 ```hcl
 variable "bucket_name" {
@@ -38,19 +32,19 @@ variable "bucket_name" {
 }
 ```
 
-Validate the templates:
+환경 구성 검토:
 
 ```
 terraform plan
 ```
 
-Deploy the code:
+환경 구성(코드 배포):
 
 ```
 terraform apply
 ```
 
-Clean up when you're done:
+환경 정리:
 
 ```
 terraform destroy
