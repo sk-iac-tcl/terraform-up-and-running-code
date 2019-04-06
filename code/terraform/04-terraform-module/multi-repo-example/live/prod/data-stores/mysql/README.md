@@ -29,7 +29,7 @@ main.tf 파일에 [기존에 생성한 버킷](https://github.com/stitchlabio/te
 terraform {
   backend "s3" {
     bucket = "(생성한 버킷 이름)"
-    key    = "prod/data-stores/mysql/terraform.tfstate"
+    key    = "live/prod/data-stores/mysql/terraform.tfstate"
     region = "us-east-1"
     encrypt = true
 #    dynamodb_table = "(생성한 DynamoDB 테이블 이름)"
