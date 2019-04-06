@@ -42,7 +42,8 @@ resource "aws_s3_bucket" "terraform_state" {
 ## =============================================================================
 
 #resource "aws_dynamodb_table" "terraform_lock" {
-#    name = "(생성할 테이블 이름)"
+##   var.tf 파일에 dynamodb_name에 대한 주석 해제  
+#    name = "${var.dynamodb_name}"
 #    hash_key = "LockID"
 #    read_capacity  = 1
 #    write_capacity = 1
