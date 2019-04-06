@@ -22,7 +22,7 @@ export AWS_ACCESS_KEY_ID=(your access key id)
 export AWS_SECRET_ACCESS_KEY=(your secret access key)
 ```
 
-`vars.tf` 파일 안에, [data-stores/mysql](../../data-stores/mysql) S3 버킷 이름과 원격에 저장된 MySQL 데이터베이스 상태 파일 이름을 입력:
+`vars.tf` 파일 안에, [data-stores/mysql](../../data-stores/mysql)에서 구성한 S3 버킷 이름과 원격에 저장된 MySQL 데이터베이스 상태 파일 이름을 입력:
 
 ```hcl
 variable "db_remote_state_bucket" {
