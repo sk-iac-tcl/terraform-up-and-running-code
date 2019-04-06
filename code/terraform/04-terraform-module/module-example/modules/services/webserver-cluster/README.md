@@ -8,4 +8,4 @@
 
 모듈은 테라폼 구성 파일의 묶음이며 코드 전체의 여러 곳에서 재사용 가능하다. 
 [stage/services/webserver-cluster](../../../stage/services-webserver-cluster)와
-[prod/services/webserver-cluster](../../../prod/services-webserver-cluster)에서 이 공통된 모듈을 사용하는 예를 확인 할 수 있다.
+[prod/services/webserver-cluster](../../../prod/services-webserver-cluster)에서 이 공통된 모듈을 사용하는 예를 확인 할 수 있습니다.
