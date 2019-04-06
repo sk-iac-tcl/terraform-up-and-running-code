@@ -1,8 +1,7 @@
-# S3 상태 파일 예제
+# 상태 파일 예제
 
 이번 실습은 [Terraform](https://www.terraform.io/)을 통해 [S3](https://aws.amazon.com/s3/)
-버켓을 [Amazon Web Services (AWS) account](http://aws.amazon.com/)에 생성한 다음 해당 S3 버킷을 원격 상태 [remote state
-storage](https://www.terraform.io/docs/state/remote/)로 활용하는 실습 입니다.
+버켓을 [Amazon Web Services (AWS) account](http://aws.amazon.com/)에 생성한 다음 해당 S3 버킷을 [원격 상태](https://www.terraform.io/docs/state/remote.html)백엔드로 활용하는 실습 입니다.
 
 자세한 내용은 *[테라폼 설치에서 운영까지](http://www.terraformupandrunning.com)* 서적의 "제3장, 테라폼 상태 관리" 참고 하십시오.
 
@@ -42,6 +41,25 @@ terraform plan
 
 ```
 terraform apply
+```
+
+S3가 구성된 이후 원격 상태 저장소 구성을 위해 백엔드 연동:  
+
+```
+terraform {
+  backend "s3" {
+    bucket = "(생성한 버킷 이름)"
+    key    = "terraform.tfstate"
+    region = "us-east-1"
+    encrypt = true
+  }
+}
+```
+
+백엔드 구성:
+
+```
+terraform init
 ```
 
 환경 정리:
