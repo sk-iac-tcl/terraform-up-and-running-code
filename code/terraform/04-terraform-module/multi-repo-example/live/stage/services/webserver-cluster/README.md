@@ -1,4 +1,4 @@
-# 웹서버 클러스터 구성 예제(스테이징 환경)
+# 웹서버 클러스터 구성 예제 (스테이징 환경)
 
 이 폴더는 [Terraform](https://www.terraform.io/)의 [EC2](https://aws.amazon.com/ec2/), 자동 스케일링 그룹([Auto Scaling](https://aws.amazon.com/autoscaling/))과 로드밸런서([ELB](https://aws.amazon.com/elasticloadbalancing/))를 통해 웹서버 클러스터를 생성하는 실습 예제를 포함하고 있으며 로드밸런서를 통해 80포트로 오는 `/` URL 요청에 대해 "Hello, World"에 대한 응답을 수행 합니다.
 
