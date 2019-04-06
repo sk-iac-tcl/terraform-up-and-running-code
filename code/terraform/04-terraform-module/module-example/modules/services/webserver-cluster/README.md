@@ -1,16 +1,11 @@
-# Web server cluster module example
+# 웹서버 클러스터 모듈 예제
 
-This folder contains example [Terraform](https://www.terraform.io/) templates that define a module for deploying a 
-cluster of web servers (using [EC2](https://aws.amazon.com/ec2/) and [Auto 
-Scaling](https://aws.amazon.com/autoscaling/)) and a load balancer (using 
-[ELB](https://aws.amazon.com/elasticloadbalancing/)) in an [Amazon Web Services (AWS) account](http://aws.amazon.com/). 
-The load balancer listens on port 80 and returns the text "Hello, World" for the `/` URL.
+이 폴더는 [Terraform](https://www.terraform.io/)의 [EC2](https://aws.amazon.com/ec2/), 자동 스케일링 그룹([Auto Scaling](https://aws.amazon.com/autoscaling/))과 로드밸런서([ELB](https://aws.amazon.com/elasticloadbalancing/))를 통해 웹서버 클러스터를 생성하는 실습 예제를 포함하고 있으며 로드밸런서를 통해 80포트로 오는 `/` URL 요청에 대해 "Hello, World"에 대한 응답을 수행 합니다.
 
-For more info, please see Chapter 4, "How to Create Reusable Infrastructure with Terraform Modules", of 
-*[Terraform: Up and Running](http://www.terraformupandrunning.com)*.
+자세한 내용은 *[테라폼 설치에서 운영까지](http://www.terraformupandrunning.com)* 서적의 "제4장, 테라폼 모듈"을 참고 하십시오.
 
-## Quick start
+## 시작 하기
 
-Terraform modules are not meant to be deployed directly. Instead, you should be using them from other templates. See
-[stage/services/webserver-cluster](../../../stage/services-webserver-cluster) and
-[prod/services/webserver-cluster](../../../prod/services-webserver-cluster) for examples.
+모듈은 테라폼 구성 파일의 묶음이며 코드 전체의 여러 곳에서 재사용 가능하다. 
+[stage/services/webserver-cluster](../../../stage/services-webserver-cluster)와
+[prod/services/webserver-cluster](../../../prod/services-webserver-cluster)에서 이 공통된 모듈을 사용하는 예를 확인 할 수 있다.
