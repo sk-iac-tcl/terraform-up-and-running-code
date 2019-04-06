@@ -1,58 +1,61 @@
-# MySQL on RDS example (staging environment)
+# RDS를 통한 MySQL 구성 예제 (스테이징 환경)
 
-This folder contains example [Terraform](https://www.terraform.io/) templates that deploy a MySQL database  (using 
-[RDS](https://aws.amazon.com/rds/) in an [Amazon Web Services (AWS) account](http://aws.amazon.com/). 
+이번 실습은 [Terraform](https://www.terraform.io/)모듈을 통해 [RDS](https://aws.amazon.com/rds/)의 MySQL 데이터베이스 엔진을 
+구성 하는 실습 입니다.
 
-For more info, please see Chapter 6, "How to use Terraform as a Team", of 
-*[Terraform: Up and Running](http://www.terraformupandrunning.com)*.
+자세한 내용은 *[테라폼 설치에서 운영까지](http://www.terraformupandrunning.com)* 서적의 "제6장, 테라폼을 팀에서 사용하기"를 참고 하십시오.
 
-## Pre-requisites
+## 사전 준비 사항
 
-* You must have [Terraform](https://www.terraform.io/) installed on your computer. 
-* You must have an [Amazon Web Services (AWS) account](http://aws.amazon.com/).
+* [Terraform](https://www.terraform.io/)이 설치 되어 있어야 합니다. 
+* [Amazon Web Services (AWS) account](http://aws.amazon.com/) 계정을 보유 하고 있어야 합니다.
 
-Please note that this code was written for Terraform 0.8.x.
+## 시작 하기
 
-## Quick start
+**이 실습은 실제 AWS 리소스를 생성합니다. 대부분 [AWS Free Tier](https://aws.amazon.com/free/)로 지원되는 범위안에서 자원을 생성하고 활용하나 사용자의 조건에 따라서 비용이 일부 발생 할 수도 있습니다. 비용 발생에 대한 부분에 대해서는 실습 제공자가 책임지지 않으며 비용에 주의하여 실습을 진행하십시오. [비용 알람](http://bit.ly/2Nryf1C)을 설정해놓는 것을 권장합니다.** 
 
-**Please note that this example will deploy real resources into your AWS account. We have made every effort to ensure 
-all the resources qualify for the [AWS Free Tier](https://aws.amazon.com/free/), but we are not responsible for any
-charges you may incur.** 
-
-Configure your [AWS access 
-keys](http://docs.aws.amazon.com/general/latest/gr/aws-sec-cred-types.html#access-keys-and-secret-access-keys) as 
-environment variables:
+[AWS 엑세스 키](http://docs.aws.amazon.com/general/latest/gr/aws-sec-cred-types.html#access-keys-and-secret-access-keys) 
+를 환경 변수로 설정:
 
 ```
 export AWS_ACCESS_KEY_ID=(your access key id)
 export AWS_SECRET_ACCESS_KEY=(your secret access key)
 ```
 
-Configure [remote state storage](https://www.terraform.io/docs/state/remote/) using an [S3](https://aws.amazon.com/s3/) 
-bucket, filling in your bucket name and region where indicated:
+[S3](https://aws.amazon.com/s3/)에 [원격 상태](https://www.terraform.io/docs/state/remote.html)를 저장하기 때문에 
+main.tf 파일에 [기존에 생성한 버킷](https://github.com/stitchlabio/terraform-up-and-running-code/tree/master/code/terraform/03-terraform-state/file-layout-example/global/s3)으로 변경이 필요하며 상태 파일 잠금까지 함께 실습하고자 할 경우 dynamodb_table도 함께 변경: 
 
 ```
-terraform remote config \
-  -backend=s3 \
-  -backend-config="bucket=(YOUR_BUCKET_NAME)" \
-  -backend-config="key=stage/data-stores/mysql/terraform.tfstate" \
-  -backend-config="region=(YOUR_BUCKET_REGION)" \
-  -backend-config="encrypt=true"
+terraform {
+  backend "s3" {
+    bucket = "(생성한 버킷 이름)"
+    key    = "live/stage/data-stores/mysql/terraform.tfstate"
+    region = "us-east-1"
+    encrypt = true
+#    dynamodb_table = "(생성한 DynamoDB 테이블 이름)"
+  }
+}
 ```
 
-Validate the templates:
+환경 갱신(백엔드 구성을 위함):
+
+```
+terraform init
+```
+
+환경 구성 검토:
 
 ```
 terraform plan
 ```
 
-Deploy the code:
+환경 구성(코드 배포):
 
 ```
 terraform apply
 ```
 
-Clean up when you're done:
+환경 정리:
 
 ```
 terraform destroy
