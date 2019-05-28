@@ -21,6 +21,7 @@ resource "aws_launch_configuration" "example" {
 
 resource "aws_autoscaling_group" "example" {
   launch_configuration = "${aws_launch_configuration.example.id}"
+  # availability_zones   = ["${data.aws_availability_zones.all.names}"]
   availability_zones   = ["${data.aws_availability_zones.available.names[0]}"]
 
   load_balancers    = ["${aws_elb.example.name}"]
@@ -51,10 +52,12 @@ resource "aws_security_group" "instance" {
   }
 }
 
+# data "aws_availability_zones" "all" {}
 data "aws_availability_zones" "available" {}
 
 resource "aws_elb" "example" {
   name               = "terraform-asg-example"
+  # availability_zones   = ["${data.aws_availability_zones.all.names}"]
   availability_zones = ["${data.aws_availability_zones.available.names[0]}"]
   security_groups    = ["${aws_security_group.elb.id}"]
 

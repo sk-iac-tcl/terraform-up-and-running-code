@@ -14,6 +14,29 @@ For more info, please see Chapter 2, "Getting started with Terraform", of
 * You must have [Terraform](https://www.terraform.io/) installed on your computer. 
 * You must have an [Amazon Web Services (AWS) account](http://aws.amazon.com/).
 
+## 주의사항
+[https://www.terraform.io/docs/providers/aws/d/availability_zones.html](https://www.terraform.io/docs/providers/aws/d/availability_zones.html)
+
+```
+# Declare the data source
+data "aws_availability_zones" "available" {}
+
+# e.g. Create subnets in the first two available availability zones
+
+resource "aws_subnet" "primary" {
+  availability_zone = "${data.aws_availability_zones.available.names[0]}"
+
+  # ...
+}
+
+resource "aws_subnet" "secondary" {
+  availability_zone = "${data.aws_availability_zones.available.names[1]}"
+
+  # ...
+}
+```
+
+
 ## Quick start
 
 **Please note that this example will deploy real resources into your AWS account. We have made every effort to ensure 
